@@ -4,33 +4,58 @@ import ast
 def clean(df,column,header):
     cnt=0
     for i in df.loc[0:,column]:
-        l=[]
+        l=""
         for j in ast.literal_eval(i):
-            l.append(j[header])
+            l+=(j[header])+" "
         df.loc[cnt,column]=str(l)
         cnt+=1
+    
+def make_soup(df,pos,column):
+    global soup
+    if pd.isnull(df.loc[pos,column]) or df.loc[pos,column]=="[]":
+        soup+=""
+    else:
+        soup=soup+str(df.loc[pos,column])+" "
+
+
 
 
 movies_df=pd.read_csv("Movie-recs/data/tmdb_5000_movies.csv")
 credits_df=pd.read_csv("Movie-recs/data/tmdb_5000_credits.csv")
-#a=input("Enter a movie name: ")
+a=input("Enter a movie name: ")
 merged_df=movies_df.merge(credits_df,left_on='id',right_on='movie_id')
-merged_df=merged_df.drop(columns=["movie_id","budget","homepage","original_language","release_date","popularity","production_companies","production_countries","revenue","runtime","spoken_languages","status","tagline"])
-
-print(merged_df.loc[7])
-
+merged_df=merged_df.drop(columns=["movie_id","budget","homepage","original_language","title_y","release_date","popularity","production_companies","production_countries","revenue","runtime","spoken_languages","status","tagline"])
 
 clean(merged_df,"genres","name")
 clean(merged_df,"keywords","name")
 clean(merged_df,"cast","name")
-clean(merged_df,"crew","name")
-"""cnt=0
-for i in merged_df.loc[0:,"genres"]:
-    l=[]
+
+cnt=0
+for i in merged_df.loc[0:,"crew"]:
+    l=""
     for j in ast.literal_eval(i):
-        l.append(j["name"])
-    merged_df.loc[cnt,"genres"]=str(l)
-    cnt+=1"""
+        if j["job"] == "Director":
+            l+=(j["name"])
+    merged_df.loc[cnt,"crew"]=str(l)
+    cnt+=1
 
-print(merged_df.loc[7])
+cnt=0
+for i in merged_df.loc[0:,"title_x"]:
+    if i==a:
+        break
+    cnt+=1
 
+
+global soup
+soup=""
+make_soup(merged_df,cnt,"genres")
+make_soup(merged_df,cnt,"keywords")
+make_soup(merged_df,cnt,"cast")
+make_soup(merged_df,cnt,"crew")
+make_soup(merged_df,cnt,"overview")
+"""soup=str(merged_df.loc[cnt,"genres"])+str(merged_df.loc[cnt,"keywords"])+str(merged_df.loc[cnt,"cast"])+str(merged_df.loc[cnt,"crew"])
+if pd.isnull(merged_df.loc[cnt,"overview"]):
+    soup+=""
+else:
+    soup+=str(merged_df.loc[cnt,"overview"])"""
+print(soup)
