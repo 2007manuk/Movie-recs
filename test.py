@@ -39,23 +39,33 @@ for i in merged_df.loc[0:,"crew"]:
     merged_df.loc[cnt,"crew"]=str(l)
     cnt+=1
 
-cnt=0
+'''cnt=0
 for i in merged_df.loc[0:,"title_x"]:
     if i==a:
         break
-    cnt+=1
+    cnt+=1'''
 
 
 global soup
 soup=""
-make_soup(merged_df,cnt,"genres")
+'''make_soup(merged_df,cnt,"genres")
 make_soup(merged_df,cnt,"keywords")
 make_soup(merged_df,cnt,"cast")
 make_soup(merged_df,cnt,"crew")
-make_soup(merged_df,cnt,"overview")
+make_soup(merged_df,cnt,"overview")'''
+
+for i in range(len(merged_df)):
+    soup=""
+    make_soup(merged_df,i,"genres")
+    make_soup(merged_df,i,"keywords")
+    make_soup(merged_df,i,"cast")
+    make_soup(merged_df,i,"crew")
+    make_soup(merged_df,i,"overview")
+    merged_df.loc[i,"soup"]=soup
+    
 """soup=str(merged_df.loc[cnt,"genres"])+str(merged_df.loc[cnt,"keywords"])+str(merged_df.loc[cnt,"cast"])+str(merged_df.loc[cnt,"crew"])
 if pd.isnull(merged_df.loc[cnt,"overview"]):
     soup+=""
 else:
     soup+=str(merged_df.loc[cnt,"overview"])"""
-print(soup)
+print(merged_df.iloc[0])
