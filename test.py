@@ -58,13 +58,13 @@ similarity = cosine_similarity(x)
 index=merged_df[merged_df['title_x'] == a].index
 l=list(max(similarity[index]))
 
-rec_mov_ind=-1
+rec_mov_ind=[]
 max=float(l[0])
-for i in l:
-    rec_mov_ind+=1
-    if float(i)>max and float(i) !=1:
-        max=float(i)
-        break
+sorted_l=sorted(l,reverse=True)
+for j in sorted_l[1:6]:
+    rec_mov_ind.append(l.index(j))
 
-print(merged_df.loc[rec_mov_ind,"title_x"])
-    
+print("Recommended movies")
+print("-"*50)
+for i in rec_mov_ind:
+    print(merged_df.loc[i,"title_x"])
