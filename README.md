@@ -1,4 +1,4 @@
-# 🎬 Movie Recommendation System
+#  Movie Recommendation System
 
 A **Content-Based Movie Recommendation System** built using **Python**, **Pandas**, and **Scikit-learn**. The project recommends movies similar to a user-selected movie by analyzing metadata such as genres, keywords, cast, director, and overview.
 
@@ -6,7 +6,7 @@ Instead of relying on user ratings or collaborative filtering, this recommender 
 
 ---
 
-## 📖 Overview
+##  Overview
 
 This project processes the **TMDB 5000 Movies Dataset** and creates a feature representation ("soup") for every movie by combining multiple metadata fields.
 
@@ -19,7 +19,7 @@ When a user enters a movie title, the program:
 
 ---
 
-## 🚀 Features
+##  Features
 
 - Merge TMDB Movies and Credits datasets
 - Clean nested JSON columns using `ast.literal_eval()`
@@ -36,7 +36,7 @@ When a user enters a movie title, the program:
 
 ---
 
-## 🛠 Tech Stack
+##  Tech Stack
 
 - Python
 - Pandas
@@ -45,7 +45,7 @@ When a user enters a movie title, the program:
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 
 ```
 Movie-Recommender/
@@ -60,7 +60,7 @@ Movie-Recommender/
 
 ---
 
-## ⚙️ How It Works
+##  How It Works
 
 ### 1. Load Dataset
 
@@ -151,7 +151,7 @@ When a movie title is entered:
 
 ---
 
-## 📸 Example
+##  Example
 
 ### Input
 
@@ -174,7 +174,7 @@ Batman Forever
 
 ---
 
-## 🧠 Concepts Used
+##  Concepts Used
 
 - Data Cleaning
 - Feature Engineering
@@ -187,7 +187,7 @@ Batman Forever
 
 ---
 
-## 📊 Dataset
+##  Dataset
 
 TMDB 5000 Movie Dataset
 
@@ -202,7 +202,7 @@ Contains:
 
 ---
 
-## 🔮 Future Improvements
+##  Future Improvements
 
 - Fuzzy search for movie titles
 - Movie posters using TMDB API
@@ -215,7 +215,7 @@ Contains:
 
 ---
 
-## 📚 What I Learned
+##  What I Learned
 
 While building this project, I learned about:
 
